@@ -12,7 +12,7 @@ pipeline {
         stage('Build') {
             steps {
                 // Exécuter les étapes de construction ici
-                // Par exemple, utiliser Maven pour construire le projet
+                // Par exemple, utiliser Maven pour construire le  projet
                 sh 'mvn clean package'
             }
         }
