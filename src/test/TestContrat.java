@@ -66,19 +66,17 @@ public class TestContrat {
         contrat.setMontantContrat(1000);
         contrat.setEtudiant(new Etudiant());
 
-        // Configurez le mock pour renvoyer le contrat fictif lorsque la méthode save est appelée
         when(contratRepository.save(contrat)).thenReturn(contrat);
 
-        // Appelez la méthode addContrat avec le contrat fictif
         Contrat addedContrat = contratService.addContrat(contrat);
 
-        // Vérifiez que le contrat ajouté correspond au contrat fictif
+
         assertEquals(contrat, addedContrat);
     }
 
     @Test
     public void testUpdateContrat() {
-        // Créez un exemple de contrat fictif pour les tests
+
         Contrat contrat = new Contrat();
         contrat.setIdContrat(1);
         contrat.setDateDebutContrat(new Date());
@@ -88,13 +86,12 @@ public class TestContrat {
         contrat.setMontantContrat(1000);
         contrat.setEtudiant(new Etudiant());
 
-        // Configurez le mock pour renvoyer le contrat fictif lorsque la méthode save est appelée
+
         when(contratRepository.save(contrat)).thenReturn(contrat);
 
-        // Appelez la méthode updateContrat avec le contrat fictif
+
         Contrat updatedContrat = contratService.updateContrat(contrat);
 
-        // Vérifiez que le contrat mis à jour correspond au contrat fictif
         assertEquals(contrat, updatedContrat);
     }
 
