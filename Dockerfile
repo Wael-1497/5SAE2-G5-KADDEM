@@ -5,9 +5,9 @@ FROM openjdk:8
 WORKDIR /app
 
   # Copiez le fichier JAR de votre application dans le conteneur
-COPY target/kaddem-4.0.jar kaddem-4.0.jar
+COPY target/khaddem-4.0.jar khaddem-4.0.jar
 
   # Exposez le port sur lequel votre application Spring Boot écoute
 EXPOSE 8089
   # Commande pour exécuter votre application Spring Boot
-CMD ["java", "-jar", "kaddem-4.0.jar"]
+CMD ["java", "-jar", "khaddem-4.0.jar"]
