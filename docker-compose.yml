@@ -1,13 +1,41 @@
-version: '3'
+version: '3.1'
 services:
-  mysql:
-    image: mon-mysql:latest
+  db:
+    image: mysql
+    container_name: mon_mysql
+    restart: unless-stopped
     ports:
       - "3306:3306"
-    # Autres configurations du service 1
+    environment:
+      MYSQL_ROOT_PASSWORD: mysql
+      MYSQL_DATABASE: khaddemApp
+    networks:
+      mynetwork:
+        ipv4_address: 172.18.0.2  # Specify the desired fixed IP address
 
-  kaddem:
-    image: kaddem:v1
+  back:
+    depends_on:
+      - db
+    build: ./
+    restart: on-failure
     ports:
       - "8089:8089"
-    # Autres configurations du service 2
+    volumes:
+      - .m2:/root/.m2
+    stdin_open: true
+    tty: true
+    networks:
+      mynetwork:
+        ipv4_address: 172.18.0.3  # Specify a different fixed IP address
+
+
+
+volumes:
+  db:
+networks:
+  mynetwork:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.18.0.0/16
