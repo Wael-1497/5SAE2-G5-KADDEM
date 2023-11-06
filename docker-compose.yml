@@ -2,9 +2,24 @@ version: '3'
 services:
   mysql:
     image: mon-mysql:latest
+    restart: unless-stopped
     ports:
-      - "3306:3306"
-    # Autres configurations du service 1
+      - 3306:3306
+    volumes:
+      - db:/var/lib/mysql
+
+      # Autres configurations du service 1
+  timesheet-backend:
+    depends_on:
+      - mysql
+    build: ./
+    restart: on-failure
+    ports:
+      - 6868:8082
+    volumes:
+      - .m2:/root/.m2
+    stdin_open: true
+    tty: true
 
   kaddem:
     image: kaddem:v1
