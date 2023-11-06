@@ -1,5 +1,5 @@
 # Utilisez une image de base Java
-FROM openjdk:8
+FROM openjdk
 
 # Définissez le répertoire de travail dans le conteneur
 EXPOSE 8082
