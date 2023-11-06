@@ -1,11 +1,13 @@
 # Utilisez une image de base Java
-FROM openjdk:8
+FROM openjdk:11
 
-# Définissez le répertoire de travail dans le conteneur
-EXPOSE 8082
-# Copiez le fichier JAR de votre application dans le conteneur
-ADD target/khaddem-4.0.jar khaddem-4.0.jar
+  # Définissez le répertoire de travail dans le conteneur
+WORKDIR /app
 
+  # Copiez le fichier JAR de votre application dans le conteneur
+COPY target/khaddem-4.0.jar khaddem-4.0.jar
 
-# Commande pour exécuter votre application Spring Boot
+  # Exposez le port sur lequel votre application Spring Boot écoute
+EXPOSE 8089
+  # Commande pour exécuter votre application Spring Boot
 CMD ["java", "-jar", "khaddem-4.0.jar"]
