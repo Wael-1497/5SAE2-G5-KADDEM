@@ -1,6 +1,6 @@
 FROM openjdk:11-oracle
 
-ENV NEXUS_URL=http://192.168.56.2/:8081/repository/maven-releases/
+ENV NEXUS_URL=http://192.168.56.2:8081/repository/maven-releases/
 ENV GROUP_ID=tn/esprit/spring
 ENV ARTIFACT_ID=khaddem
 ENV ARTIFACT_VERSION=4.0
